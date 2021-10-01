@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 const isProduction = process.env.NODE_ENV == 'production';
 
@@ -15,7 +16,8 @@ const config = {
     rules: [
       {
         test: /\.(js|jsx)$/i,
-        loader: 'babel-loader',
+        exclude: /node_modules/,
+        use: ['babel-loader'],
       },
       {
         test: /\.s[ac]ss$/i,
@@ -26,6 +28,14 @@ const config = {
         type: 'asset',
       },
     ],
+  },
+  resolve: {
+    extensions: ['*', '.js', '.jsx'],
+  },
+  plugins: [new webpack.HotModuleReplacementPlugin()],
+  devServer: {
+    contentBase: path.resolve(__dirname, 'public'),
+    hot: true,
   },
 };
 
