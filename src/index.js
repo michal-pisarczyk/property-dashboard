@@ -1,6 +1,8 @@
 import ReactDOM from "react-dom";
 import React, { Component } from "react";
 import "./styles.scss";
+import { PropertyList }
+  from "./components/property-list/property-list.component";
 
 class App extends Component {
   state = {
@@ -26,7 +28,7 @@ class App extends Component {
       <div className="App">
         {
           this.state.apiReady ?
-          <p>Check the JS console for some data...</p> :
+          <PropertyList properties={ this.state.properties } /> :
           <p>Something went wrong. Check the console for details.</p>
         }
       </div>
