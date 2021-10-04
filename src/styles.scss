@@ -3,3 +3,13 @@ body {
   background-color: #f4ebff;
   font-family: "Josefin Slab", serif;
 }
+
+.App {
+  text-align: center;
+
+  >h1 {
+    font-size: 3em;
+    margin: 1.5em auto .5em auto;
+    opacity: .5;
+  }
+}
