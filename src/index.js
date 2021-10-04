@@ -4,6 +4,7 @@ import "./styles.scss";
 
 class App extends Component {
   state = {
+    properties: [],
     apiReady: false
   }
 
@@ -11,8 +12,9 @@ class App extends Component {
     fetch("/api/properties?location=brighton")
       .then(response => response.json())
       .then((json) => {
-        this.setState({ apiReady: true });
         console.log(json.result.properties.elements);
+        this.setState({ properties: json.result.properties.elements });
+        this.setState({ apiReady: true });
       })
       .catch((error) => {
         console.error(error);
